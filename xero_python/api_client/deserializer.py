@@ -252,6 +252,7 @@ def deserialize_datetime_ms(data_type, data, model_finder):
         timestamp_ms = int(match.groupdict()["timestamp"])
         timestamp_s = timestamp_ms / 1000
 
+        import os
         if os.name == "nt" and timestamp_s < 0:
             return datetime.datetime(1970, 1, 1, tzinfo=tz_info) + datetime.timedelta(seconds=timestamp_s, microseconds=0)
         else:
